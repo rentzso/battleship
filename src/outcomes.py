@@ -1,0 +1,5 @@
+MISS = 'Miss'
+HIT = 'Hit'
+SUNK = 'Sunk'
+ALREADY_TAKEN = 'Already taken'
+WIN = 'Win'
