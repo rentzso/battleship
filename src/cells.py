@@ -5,11 +5,15 @@ OCCUPIED = 'OCCUPIED'
 MISS = 'MISS'
 HIT = 'HIT'
 
+
 class AttackStrategy(object):
 
     @staticmethod
     def attack(cell):
-        raise NotImplemented('attack method should be implemented on subclasses of AttackStrategy')
+        raise NotImplemented(
+            'attack method should be implemented '
+            'on subclasses of AttackStrategy'
+        )
 
 
 class AttackEmpty(AttackStrategy):

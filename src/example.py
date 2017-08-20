@@ -1,5 +1,6 @@
 from board import Board
 
+
 def main():
     print 'EMPTY 5x5 BOARD'
     game_board = Board(size_x=5, size_y=5)
@@ -14,14 +15,14 @@ def main():
     print game_board
     raw_input()
     print 'MISSED ATTACK'
-    print game_board.attack(0, 0) # MISS
+    print game_board.attack(0, 0)  # MISS
     print game_board
     raw_input()
     print 'SUNK SHIP'
-    print game_board.attack(1, 1) # HIT
-    print game_board.attack(2, 1) # HIT
-    print game_board.attack(3, 1) # SUNK
+    print game_board.attack(1, 1)  # HIT
+    print game_board.attack(2, 1)  # HIT
+    print game_board.attack(3, 1)  # SUNK
     print game_board
 
-if __name__=='__main__':
+if __name__ == '__main__':
     main()

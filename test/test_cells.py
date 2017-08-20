@@ -1,6 +1,7 @@
 import cells
 from mock import MagicMock
 
+
 def test_empty():
     c = cells.Cell()
     assert c.state == cells.EMPTY
@@ -8,6 +9,7 @@ def test_empty():
     assert c.state == cells.MISS
     c.attack()
     assert c.state == cells.MISS
+
 
 def test_occupied():
     c = cells.Cell()

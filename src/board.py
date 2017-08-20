@@ -49,6 +49,7 @@ class Board(object):
             for row in self.positions
         ])
 
+
 class BoardTracker(object):
 
     def __init__(self):

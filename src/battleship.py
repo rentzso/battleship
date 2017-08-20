@@ -1,5 +1,6 @@
 import outcomes
 
+
 class Battleship(object):
 
     def __init__(self, length, start_x, start_y, is_horizontal, board_tracker):

@@ -3,6 +3,7 @@ from mock import MagicMock
 import outcomes
 import battleship
 
+
 def test_battleship():
     board_tracker = MagicMock()
     board_tracker.sink.return_value = outcomes.SUNK
