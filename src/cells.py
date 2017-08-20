@@ -27,7 +27,7 @@ class AttackOccupied(AttackStrategy):
 
     @staticmethod
     def attack(cell):
-        cell.state = OCCUPIED
+        cell.state = HIT
         return cell.battleship.attack()
 
     def __str__(self):
@@ -54,14 +54,13 @@ class AttackHit(AttackStrategy):
         return 'X'
 
 
-strategy = {
-    EMPTY: AttackEmpty(),
-    OCCUPIED: AttackOccupied(),
-    MISS: AttackMiss(),
-    HIT: AttackHit()
-}
-
 class Cell(object):
+    strategy = {
+        EMPTY: AttackEmpty(),
+        OCCUPIED: AttackOccupied(),
+        MISS: AttackMiss(),
+        HIT: AttackHit()
+    }
 
     def __init__(self):
         self.state = EMPTY
@@ -71,7 +70,7 @@ class Cell(object):
         self.state = OCCUPIED
 
     def attack(self):
-        strategy[self.state].attack(self)
+        return self.strategy[self.state].attack(self)
 
     def __str__(self):
-        return str(strategy[self.state])
+        return str(self.strategy[self.state])

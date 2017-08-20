@@ -1,6 +1,7 @@
 import outcomes
 
-def Battleship(object):
+class Battleship(object):
+
     def __init__(self, length, start_x, start_y, is_horizontal, board_tracker):
         self.length = length
         self.start_x = start_x
