@@ -1,4 +1,4 @@
-from board import Board
+from board import Board, make_ship_positions
 
 
 def main():
@@ -7,11 +7,13 @@ def main():
     print game_board
     raw_input()
     print 'HORIZONTAL SHIP'
-    game_board.place_ship(length=3, start_x=1, start_y=1, is_horizontal=True)
+    positions = make_ship_positions(start_x=1, start_y=1, is_horizontal=True, name='SHIP3')
+    game_board.place_ship(positions)
     print game_board
     raw_input()
-    print 'VERTICAL SHIP'
-    game_board.place_ship(length=4, start_x=4, start_y=1, is_horizontal=False)
+    print 'SUBMARINE'
+    positions = make_ship_positions(start_x=4, start_y=1, is_horizontal=False, name='SUBMARINE')
+    game_board.place_ship(positions)
     print game_board
     raw_input()
     print 'MISSED ATTACK'

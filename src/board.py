@@ -2,6 +2,30 @@ import cells
 import outcomes
 from battleship import Battleship
 
+names = {
+    'SHIP3': 3,
+    'SHIP4': 4
+}
+
+def make_ship_positions(start_x, start_y, is_horizontal, name):
+    if name == 'SUBMARINE':
+        yield (start_x, start_y)
+        if is_horizontal:
+            yield (start_x + 2, start_y)
+        else:
+            yield (start_x, start_y + 2)
+    elif name == 'SHIP3':
+        i = 0
+        while (i < names[name]):
+            if is_horizontal:
+                x = start_x + i
+                y = start_y
+            else:
+                x = start_x
+                y = start_y + i
+            yield (x, y)
+            i += 1
+
 
 class Board(object):
     """Class that represents the board of the game.
@@ -26,7 +50,7 @@ class Board(object):
                 row.append(cells.Cell())
         self.board_tracker = BoardTracker()
 
-    def place_ship(self, length, start_x, start_y, is_horizontal):
+    def place_ship(self, positions):
         """Place a ship on the board
 
         Parameters:
@@ -35,32 +59,42 @@ class Board(object):
             start_y: y coordinate of the upper left corner of the ship
             is_horizontal: boolean indicating if the ship is horizontal
         """
-        i = 0
+        # i = 0
+        # ship_cells = []
+        # while (i < length):
+        #     if is_horizontal:
+        #         x = start_x + i
+        #         y = start_y
+        #     else:
+        #         x = start_x
+        #         y = start_y + i
+        #     if not (self.size_x > x >= 0 and self.size_y > y >= 0):
+        #         raise Exception('Cell is out of the board boundaries')
+        #     elif self.positions[y][x].state == cells.EMPTY:
+        #         ship_cells.append((x, y))
+        #     else:
+        #         raise Exception('Cell is not empty')
+        #     i += 1
+        # battleship = Battleship(length)
         ship_cells = []
-        while (i < length):
-            if is_horizontal:
-                x = start_x + i
-                y = start_y
-            else:
-                x = start_x
-                y = start_y + i
+        for x, y in positions:
             if not (self.size_x > x >= 0 and self.size_y > y >= 0):
                 raise Exception('Cell is out of the board boundaries')
             elif self.positions[y][x].state == cells.EMPTY:
                 ship_cells.append((x, y))
             else:
                 raise Exception('Cell is not empty')
-            i += 1
-        battleship = Battleship(
-            length, start_x, start_y,
-            is_horizontal, self.board_tracker)
+        battleship = Battleship(len(ship_cells))
         self.board_tracker.add_ship()
         for x, y in ship_cells:
             self.positions[y][x].occupy(battleship)
 
     def attack(self, x, y):
         """Forward the attack to the cell at position (x, y)"""
-        return self.positions[y][x].attack()
+        result = self.positions[y][x].attack()
+        if result == outcomes.SUNK:
+            result = self.board_tracker.sink()
+        return result
 
     def __str__(self):
         return '\n'.join([
