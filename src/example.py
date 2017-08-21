@@ -16,6 +16,7 @@ def main():
     raw_input()
     print 'MISSED ATTACK'
     print game_board.attack(0, 0)  # MISS
+    print game_board.attack(0, 0)  # ALREADY_TAKEN
     print game_board
     raw_input()
     print 'SUNK SHIP'
@@ -26,6 +27,7 @@ def main():
     raw_input()
     print 'WIN GAME'
     print game_board.attack(4, 1)  # HIT
+    print game_board.attack(4, 1)  # ALREADY_TAKEN
     print game_board.attack(4, 2)  # HIT
     print game_board.attack(4, 3)  # HIT
     print game_board.attack(4, 4)  # WIN
