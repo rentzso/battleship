@@ -4,8 +4,18 @@ from battleship import Battleship
 
 
 class Board(object):
+    """Class that represents the board of the game.
+
+    Attributes:
+        size_x: horizontal size of the board
+        size_y: vertical size of the board
+        positions: list of lists that store a cell for
+                   each (x, y) position in the board
+        board_tracker: keep the global state of the board
+    """
 
     def __init__(self, size_x, size_y):
+        """Initialize Board with empty cells for all positions"""
         self.size_x = size_x
         self.size_y = size_y
         self.positions = []
@@ -17,6 +27,14 @@ class Board(object):
         self.board_tracker = BoardTracker()
 
     def place_ship(self, length, start_x, start_y, is_horizontal):
+        """Place a ship on the board
+
+        Parameters:
+            length: integer for the length of the ship
+            start_x: x coordinate of the upper left corner of the ship
+            start_y: y coordinate of the upper left corner of the ship
+            is_horizontal: boolean indicating if the ship is horizontal
+        """
         i = 0
         ship_cells = []
         while (i < length):
@@ -41,6 +59,7 @@ class Board(object):
             self.positions[y][x].occupy(battleship)
 
     def attack(self, x, y):
+        """Forward the attack to the cell at position (x, y)"""
         return self.positions[y][x].attack()
 
     def __str__(self):
@@ -51,14 +70,25 @@ class Board(object):
 
 
 class BoardTracker(object):
+    """Class that keeps global state of a board
+
+    Parameters:
+        _battleships_not_sunk: number of battleship remaining on the board
+    """
 
     def __init__(self):
+        """The board starts with no battleships"""
         self._battleships_not_sunk = 0
 
     def add_ship(self):
+        """Increment the battleship count by one"""
         self._battleships_not_sunk += 1
 
     def sink(self):
+        """
+        Increment the battleship count by one.
+        If the count goes to 0, end the game
+        """
         self._battleships_not_sunk -= 1
         if self._battleships_not_sunk == 0:
             return outcomes.WIN
