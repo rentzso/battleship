@@ -46,3 +46,10 @@ game_board.attack(1, 1) # HIT
 game_board.attack(2, 1) # HIT
 game_board.attack(3, 1) # SUNK
 ```
+Win the game:
+```python
+game_board.attack(4, 1)  # HIT
+game_board.attack(4, 2)  # HIT
+game_board.attack(4, 3)  # HIT
+game_board.attack(4, 4)  # WIN
+```

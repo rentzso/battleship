@@ -23,6 +23,13 @@ def main():
     print game_board.attack(2, 1)  # HIT
     print game_board.attack(3, 1)  # SUNK
     print game_board
+    raw_input()
+    print 'WIN GAME'
+    print game_board.attack(4, 1)  # HIT
+    print game_board.attack(4, 2)  # HIT
+    print game_board.attack(4, 3)  # HIT
+    print game_board.attack(4, 4)  # WIN
+    print game_board
 
 if __name__ == '__main__':
     main()
