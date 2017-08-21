@@ -1,5 +1,11 @@
 # Battleship
-In this repository I have implemented a Board for the battleship game including the attack feature.
+In this repository I have implemented a Board for the battleship game including the attack feature.<br>
+The possible results of an attack are the following:
+- ‘Hit’ if there is a ship occupying the position
+- ‘Miss’ if no ships occupy the position
+- ‘Already Taken’ if the position has previously been attacked
+- ‘Sunk’ if the attack hits the last remaining position of a ship
+- ‘Win’ if the attack sinks the last remaining ship
 
 ## Code Structure
 The code is stored in the ```src``` folder. Tests are in the ```test``` folder.
@@ -9,9 +15,14 @@ The code is stored in the ```src``` folder. Tests are in the ```test``` folder.
 2) battleship.py - Battleship class that keep tracks of number of hits
 3) cells.py - Cell class implementing a method ```attack``` that handles attacks on the different cell types in the board
 4) outcomes.py - module that defines the possible API answers (HIT, MISS, ALREADY_TAKEN, SUNK, WIN)
-5) example.py - to run the API example below ```python src/example.py```
+5) example.py - script to run the API example below
 
-### API Usage Example
+## API Usage Example
+To run this example:
+```
+python src/example.py
+```
+### Steps
 Create a 5x5 empty board:
 ```python
 from board import Board
