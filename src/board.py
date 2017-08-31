@@ -8,6 +8,16 @@ names = {
 }
 
 def make_ship_positions(start_x, start_y, is_horizontal, name):
+    """Builds the cell positions of a ship.
+
+    Parameters:
+        length: integer for the length of the ship
+        start_x: x coordinate of the upper left corner of the ship
+        start_y: y coordinate of the upper left corner of the ship
+        is_horizontal: boolean indicating if the ship is horizontal
+    Returns:
+        generator: cell positions of the ship
+    """
     if name == 'SUBMARINE':
         yield (start_x, start_y)
         if is_horizontal:
@@ -54,28 +64,8 @@ class Board(object):
         """Place a ship on the board
 
         Parameters:
-            length: integer for the length of the ship
-            start_x: x coordinate of the upper left corner of the ship
-            start_y: y coordinate of the upper left corner of the ship
-            is_horizontal: boolean indicating if the ship is horizontal
+            positions: iterator with the (x,y) cells of the ship
         """
-        # i = 0
-        # ship_cells = []
-        # while (i < length):
-        #     if is_horizontal:
-        #         x = start_x + i
-        #         y = start_y
-        #     else:
-        #         x = start_x
-        #         y = start_y + i
-        #     if not (self.size_x > x >= 0 and self.size_y > y >= 0):
-        #         raise Exception('Cell is out of the board boundaries')
-        #     elif self.positions[y][x].state == cells.EMPTY:
-        #         ship_cells.append((x, y))
-        #     else:
-        #         raise Exception('Cell is not empty')
-        #     i += 1
-        # battleship = Battleship(length)
         ship_cells = []
         for x, y in positions:
             if not (self.size_x > x >= 0 and self.size_y > y >= 0):

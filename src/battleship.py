@@ -6,12 +6,7 @@ class Battleship(object):
 
     Attributes:
         length: integer for the length of the ship
-        start_x: x coordinate of the upper left corner of the ship
-        start_y: y coordinate of the upper left corner of the ship
-        is_horizontal: boolean indicating if the ship is horizontal
         hit_count: number of hits
-        board_tracker: instance of BoardTracker keeping the global
-                       state of the ship board
     """
 
     def __init__(self, length):
